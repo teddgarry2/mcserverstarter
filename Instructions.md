@@ -15,4 +15,4 @@
 ![image](https://github.com/user-attachments/assets/d7cc5fcb-01d7-47d7-ac26-f2b2dd96e715)
 
 
-## Note: Do not run if there's a script running already
+## Note: Do not run if there's a script running already (Nothing happens but don't waste ur time)
