@@ -10,7 +10,7 @@
 ### 4) Click on **Run workflow** again
 ![image](https://github.com/user-attachments/assets/94f6226d-5d4e-4e70-9efb-8a4005fb0074)
 
-### 5) View if to check the log
+### 5) View to check the log
 ![image](https://github.com/user-attachments/assets/b29081d0-19ab-43d9-8316-5598566a15e1)
 ![image](https://github.com/user-attachments/assets/d7cc5fcb-01d7-47d7-ac26-f2b2dd96e715)
 
