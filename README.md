@@ -11,7 +11,7 @@
 
   To add repository secret:(Settings > Secrets and variables > Actions > repository secrets)
 
-( No one can see them after u set so it's really a secret)
+( No one, even u can't see them after u set so it's really a secret)
 ![repo_secrets1](https://github.com/dibope/mcserverstarter/blob/main/.github/workflows/Images/repo_secrets1.jpg)
 
 2)Click Run selenium script(yeah not the one in pic) then Run workflow. Refresh page to view the run.
