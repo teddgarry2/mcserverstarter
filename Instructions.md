@@ -12,8 +12,9 @@
 
 ### 5) View to check the log
 ![image](https://github.com/user-attachments/assets/b29081d0-19ab-43d9-8316-5598566a15e1)
-![image](https://github.com/user-attachments/assets/4b7f00b9-48cf-455e-bae0-cf661f3c1b8d)
 ![image](https://github.com/user-attachments/assets/d7cc5fcb-01d7-47d7-ac26-f2b2dd96e715)
+
+![image](https://github.com/user-attachments/assets/4b7f00b9-48cf-455e-bae0-cf661f3c1b8d)
 
 
 ## Note: Do not run if there's a script running already (Nothing happens but don't waste ur time)
