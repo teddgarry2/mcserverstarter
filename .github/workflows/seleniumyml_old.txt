@@ -9,6 +9,8 @@ on:
 jobs:
   run-selenium:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read  # Restrict repo access to read-only
     #container:
      # image: selenium/standalone-firefox:latest  # Prebuilt image with Selenium and Firefox
 
@@ -17,35 +19,48 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Check Firefox Path
-        run: which firefox
       - name: Set Up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
-          
-      - name: Cache Python Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('.github/workflows/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-      - name: Print Cache Key
-        run: echo "Cache Key: ${{ steps.cache.outputs.cache-hit }}"
-        
+          python-version: '3.11'
       - name: Install Dependencies
         run: pip install -r .github/workflows/requirements.txt
-      - name: Install Firefox
-        run: sudo apt-get install -y firefox
 
-      - name: Install GeckoDriver
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Install Chrome 134.0.6998.165 manually
         run: |
-            LATEST_VERSION=$(curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest | jq -r ".tag_name")
-            wget "https://github.com/mozilla/geckodriver/releases/download/$LATEST_VERSION/geckodriver-$LATEST_VERSION-linux64.tar.gz"
-            tar -xvzf "geckodriver-$LATEST_VERSION-linux64.tar.gz"
-            chmod +x geckodriver
-            sudo mv geckodriver /usr/local/bin/
+          wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/134.0.6998.165/linux64/chrome-linux64.zip -O chrome.zip
+          unzip chrome.zip
+          sudo mv chrome-linux64 /opt/chrome
+          sudo ln -sf /opt/chrome/chrome /usr/bin/google-chrome
+
+      - name: Install ChromeDriver 134.0.6998.165
+        run: |
+          # Set Chrome version explicitly
+          CHROME_VERSION="134.0.6998.165"
+      
+          # Get the matching ChromeDriver URL
+          CHROMEDRIVER_URL=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json" \
+            | jq -r '.versions[] 
+              | select(.version=="'"$CHROME_VERSION"'") 
+              | .downloads.chromedriver[] 
+              | select(.platform=="linux64") 
+              | .url')
+      
+          if [ -z "$CHROMEDRIVER_URL" ]; then
+            echo "Could not find ChromeDriver for $CHROME_VERSION"
+            exit 1
+          fi
+      
+          echo "Downloading ChromeDriver from: $CHROMEDRIVER_URL"
+          wget -q "$CHROMEDRIVER_URL" -O chromedriver.zip
+          unzip -o chromedriver.zip
+          chmod +x chromedriver-linux64/chromedriver
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+
+
       - name: Debug Secrets
         env:
           USERNAME: ${{ secrets.USERNAME }}
@@ -53,7 +68,6 @@ jobs:
         
       - name: Install Selenium
         run: pip install selenium  
-
       - name: Run Selenium Script
         env:
           USERNAME: ${{ secrets.USERNAME }}
