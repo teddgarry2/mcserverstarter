@@ -29,33 +29,30 @@ jobs:
       - name: Install jq
         run: sudo apt-get install -y jq
 
-      - name: Install Chrome 134.0.6998.165 manually
+      - name: Install ChromeDriver
         run: |
-          wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/134.0.6998.165/linux64/chrome-linux64.zip -O chrome.zip
-          unzip chrome.zip
-          sudo mv chrome-linux64 /opt/chrome
-          sudo ln -sf /opt/chrome/chrome /usr/bin/google-chrome
-
-      - name: Install ChromeDriver 134.0.6998.165
-        run: |
-          # Set Chrome version explicitly
-          CHROME_VERSION="134.0.6998.165"
+          # Get installed Chrome version (full version)
+          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
+          
+          # Fetch the latest available ChromeDriver version (without relying on LATEST_RELEASE)
+          CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json" | jq -r '.versions[] | select(.version=="'"$CHROME_VERSION"'") | .downloads.chromedriver[] | select(.platform=="linux64") | .url')
       
-          # Get the matching ChromeDriver URL
-          CHROMEDRIVER_URL=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json" \
-            | jq -r '.versions[] 
-              | select(.version=="'"$CHROME_VERSION"'") 
-              | .downloads.chromedriver[] 
-              | select(.platform=="linux64") 
-              | .url')
-      
-          if [ -z "$CHROMEDRIVER_URL" ]; then
-            echo "Could not find ChromeDriver for $CHROME_VERSION"
+          if [ -z "$CHROMEDRIVER_VERSION" ]; then
+            echo "Failed to find a ChromeDriver version for Chrome $CHROME_VERSION"
             exit 1
           fi
       
-          echo "Downloading ChromeDriver from: $CHROMEDRIVER_URL"
-          wget -q "$CHROMEDRIVER_URL" -O chromedriver.zip
+          echo "Downloading ChromeDriver from: $CHROMEDRIVER_VERSION"
+      
+          # Download ChromeDriver
+          wget -q "$CHROMEDRIVER_VERSION" -O chromedriver.zip
+      
+          if [ $? -ne 0 ]; then
+            echo "Failed to download ChromeDriver. Exiting."
+            exit 1
+          fi
+      
+          # Extract and move ChromeDriver
           unzip -o chromedriver.zip
           chmod +x chromedriver-linux64/chromedriver
           sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
