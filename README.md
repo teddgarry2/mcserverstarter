@@ -17,7 +17,17 @@
 2)Click Run selenium script(yeah not the one in pic) then Run workflow. Refresh page to view the run.
 ![start_mc](https://github.com/dibope/mcserverstarter/blob/main/.github/workflows/Images/startmc.jpg)
 
-3)Add your friends as collaborators.
+3) Create a finegrain token (If using this for the [bot](https://discord.com/oauth2/authorize?client_id=1365006964001738993))
+Go to settings in profile > developer settings > personal access token > fine grain (there a image below if don't know what to set in it)
+Permissions for Personal access token
+Expiration : no expiration
+
+Repository access : all repositories (or the repo u want)
+
+Permissions : Actions (read and write); Workflow(read and write)
+
+
+4)Add your friends as collaborators(you know it's not required for the [bot](https://discord.com/oauth2/authorize?client_id=1365006964001738993))
 ![collaboraters](https://github.com/dibope/mcserverstarter/blob/main/.github/workflows/Images/collaboraters.jpg)
 
 ### To prevent them from changing the code:
