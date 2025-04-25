@@ -19,7 +19,9 @@
 
 3) Create a finegrain token (If using this for the [bot](https://discord.com/oauth2/authorize?client_id=1365006964001738993))
 Go to settings in profile > developer settings > personal access token > fine grain (there a image below if don't know what to set in it)
+
 Permissions for Personal access token
+
 Expiration : no expiration
 
 Repository access : all repositories (or the repo u want)
