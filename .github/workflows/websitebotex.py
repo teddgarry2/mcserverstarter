@@ -37,6 +37,7 @@ driver = webdriver.Firefox(options=options, service=service)
 '''
 # Chrome Options
 options = Options()
+options.binary_location = "/opt/chrome/chrome"
 options.add_argument("--headless=new")  # Use new headless mode
 options.add_argument("window-size=1920x1080")  # Ensure full viewport
 options.add_argument("--disable-gpu")  # Fix rendering issues in headless
