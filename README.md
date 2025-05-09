@@ -4,6 +4,7 @@
 ### Table of contents:
 - [Setup](https://github.com/dibope/mcserverstarter/blob/main/README.md#to-use-it-for-ur-seedloaf-server)
 - [Prevent friends from changing code](https://github.com/dibope/mcserverstarter/blob/main/README.md#to-prevent-them-from-changing-the-code) (Make sure u do this too!)
+- [Common problems](https://github.com/dibope/mcserverstarter/blob/main/README.md#common-problems)
 
 ### To use it for ur seedloaf server: (Setup)
 
@@ -40,3 +41,9 @@ Permissions : Actions (read and write); Workflow(read and write)
 
 2)Set ur friends with read only access
 
+### Common problems:
+1. rewrite secrets
+
+2. check if u have enabled workflows in Action tab
+
+3. try **renaming selenium_new.txt to selenium.yml** after renaming current selenium.yml to selenium.txt or something
