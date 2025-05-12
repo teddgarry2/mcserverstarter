@@ -1,76 +1,70 @@
 name: Run Selenium Script
 
 on:
-  workflow_dispatch:  # Allows manual execution
+  workflow_dispatch:
   push:
     branches:
-      - main  # Only runs on main branch pushes
+      - main
 
 jobs:
   run-selenium:
     runs-on: ubuntu-latest
     permissions:
-      contents: read  # Restrict repo access to read-only
-    #container:
-     # image: selenium/standalone-firefox:latest  # Prebuilt image with Selenium and Firefox
+      contents: read
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+
       - name: Set Up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+
       - name: Install Dependencies
         run: pip install -r .github/workflows/requirements.txt
 
       - name: Install jq
-        run: sudo apt-get install -y jq
+        run: sudo apt-get install -y jq unzip
 
-      - name: Install Chrome 134.0.6998.165 manually
+      - name: Get Latest Stable Chrome Version
+        id: get_chrome_version
         run: |
-          wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/134.0.6998.165/linux64/chrome-linux64.zip -O chrome.zip
-          unzip chrome.zip
+          LATEST_VERSION=$(curl -s https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json | jq -r '.channels.Stable.version')
+          echo "Latest Chrome version: $LATEST_VERSION"
+          echo "version=$LATEST_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Install Chrome to /opt/chrome
+        run: |
+          VERSION=${{ steps.get_chrome_version.outputs.version }}
+          URL="https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${VERSION}/linux64/chrome-linux64.zip"
+          wget "$URL" -O chrome.zip
+          unzip -q chrome.zip
           sudo mv chrome-linux64 /opt/chrome
+          sudo chmod +x /opt/chrome/chrome
           sudo ln -sf /opt/chrome/chrome /usr/bin/google-chrome
 
-      - name: Install ChromeDriver 134.0.6998.165
+      - name: Install ChromeDriver to /usr/local/bin
         run: |
-          # Set Chrome version explicitly
-          CHROME_VERSION="134.0.6998.165"
-      
-          # Get the matching ChromeDriver URL
-          CHROMEDRIVER_URL=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json" \
-            | jq -r '.versions[] 
-              | select(.version=="'"$CHROME_VERSION"'") 
-              | .downloads.chromedriver[] 
-              | select(.platform=="linux64") 
-              | .url')
-      
-          if [ -z "$CHROMEDRIVER_URL" ]; then
-            echo "Could not find ChromeDriver for $CHROME_VERSION"
-            exit 1
-          fi
-      
-          echo "Downloading ChromeDriver from: $CHROMEDRIVER_URL"
-          wget -q "$CHROMEDRIVER_URL" -O chromedriver.zip
-          unzip -o chromedriver.zip
+          VERSION=${{ steps.get_chrome_version.outputs.version }}
+          URL="https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${VERSION}/linux64/chromedriver-linux64.zip"
+          wget "$URL" -O chromedriver.zip
+          unzip -q chromedriver.zip
           chmod +x chromedriver-linux64/chromedriver
           sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
-
 
       - name: Debug Secrets
         env:
           USERNAME: ${{ secrets.USERNAME }}
         run: echo "USERNAME is $USERNAME"
-        
+
       - name: Install Selenium
         run: pip install selenium  
+
       - name: Run Selenium Script
         env:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
-        run: python .github/workflows/websitebotex.py  # Change to your script filename
-        
+        run: python .github/workflows/websitebotex.py
