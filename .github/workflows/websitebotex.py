@@ -116,6 +116,7 @@ except Exception as e:
     print(f"Error occurred(start): {e}")
 
 #---------------------------
+''' Jasper removed this feature now
 try:
     # Wait for the alert div to appear
     alert_div = WebDriverWait(driver, 20).until(
@@ -142,5 +143,5 @@ except Exception:
 # Check browser logs to see if any errors are happening
 for entry in driver.get_log('browser'):
     print(entry)
-
+'''
 driver.quit()
