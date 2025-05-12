@@ -46,7 +46,7 @@ Permissions : Actions (read and write); Workflow(read and write)
 
 2. check if u have enabled workflows in Action tab
 
-3. try **renaming selenium_new.txt to selenium.yml** after renaming current selenium.yml to selenium.txt or something
+3. try **renaming selenium_old_working.txt to selenium.yml** after renaming current selenium.yml to selenium.txt or something
 
 4. If you have created seedloaf acc though discord, even if u added password after that it wont work. Do the following in Seedloaf:
 
