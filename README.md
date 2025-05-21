@@ -3,7 +3,7 @@
 #### (There's a Instructions.md if u wish to add ur friends to use this)
 ### Table of contents:
 - [Setup](https://github.com/dibope/mcserverstarter/blob/main/README.md#to-use-it-for-ur-seedloaf-server)
-- [Prevent friends from changing code](https://github.com/dibope/mcserverstarter/blob/main/README.md#to-prevent-them-from-changing-the-code) (Make sure u do this too!)
+- [Prevent friends from changing code(Not needed for bot)]([https://github.com/dibope/mcserverstarter/blob/main/README.md#to-prevent-them-from-changing-the-code](https://github.com/dibope/mcserverstarter/blob/main/README.md#to-prevent-them-from-changing-the-codenot-needed-for-bot)) (Make sure u do this too!)
 - [Common problems](https://github.com/dibope/mcserverstarter/blob/main/README.md#common-problems)
 
 ### To use it for ur seedloaf server: (Setup)
