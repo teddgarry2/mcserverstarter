@@ -1,12 +1,14 @@
 ## Runs entirely on github no need to download 
 #### (only thing u need to do is add email and password)
-#### (Remove this file and rename Instructions.md to README.md)
+#### (There's a Instructions.md if u wish to add ur friends to use this)
 ### Table of contents:
 - [Setup](https://github.com/dibope/mcserverstarter/blob/main/README.md#to-use-it-for-ur-seedloaf-server)
 - [Prevent friends from changing code](https://github.com/dibope/mcserverstarter/blob/main/README.md#to-prevent-them-from-changing-the-code) (Make sure u do this too!)
 - [Common problems](https://github.com/dibope/mcserverstarter/blob/main/README.md#common-problems)
 
 ### To use it for ur seedloaf server: (Setup)
+
+
 
 1)Fork this and create 2 repository secrets named USERNAME, PASSWORD.(ur email and seddloaf password)
 
@@ -18,7 +20,10 @@
 2)Click Run selenium script(yeah not the one in pic) then Run workflow. Refresh page to view the run.
 ![start_mc](https://github.com/dibope/mcserverstarter/blob/main/.github/workflows/Images/startmc.jpg)
 
-3) Create a finegrain token (If using this for the [bot](https://discord.com/oauth2/authorize?client_id=1365006964001738993))
+3)(Only if you are using this for the [bot](https://discord.com/oauth2/authorize?client_id=1365006964001738993) else skip to Step-4)
+
+Create a finegrain token 
+
 Go to settings in profile > developer settings > personal access token > fine grain (there a image below if don't know what to set in it)
 
 Permissions for Personal access token
@@ -30,10 +35,12 @@ Repository access : all repositories (or the repo u want)
 Permissions : Actions (read and write); Workflow(read and write)
 
 
-4)Add your friends as collaborators(you know it's not required for the [bot](https://discord.com/oauth2/authorize?client_id=1365006964001738993))
+4)(Not needed for the [bot](https://discord.com/oauth2/authorize?client_id=1365006964001738993))
+
+Add your friends as collaborators
 ![collaboraters](https://github.com/dibope/mcserverstarter/blob/main/.github/workflows/Images/collaboraters.jpg)
 
-### To prevent them from changing the code:
+### To prevent them from changing the code(Not needed for bot):
 
 1)Go to settings>branchs>branch protection rule>Require status check>select "fail-job" or type if not appearred.
 ![fail_job1](https://github.com/dibope/mcserverstarter/blob/main/.github/workflows/Images/fail_job1.jpg)
