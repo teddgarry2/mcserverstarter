@@ -1,4 +1,4 @@
-name: Run Selenium Script with cached chrome
+name: Run Selenium Script 
 
 on:
   workflow_dispatch:
