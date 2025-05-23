@@ -67,9 +67,6 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
         run: echo "USERNAME is $USERNAME"
 
-      - name: Install Selenium
-        run: pip install selenium  
-
       - name: Run Selenium Script
         env:
           USERNAME: ${{ secrets.USERNAME }}
