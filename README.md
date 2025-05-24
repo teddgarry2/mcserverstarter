@@ -24,7 +24,7 @@
 
 Create a finegrain token 
 
-Go to settings in profile > developer settings > personal access token > fine grain (there a image below if don't know what to set in it)
+Go to settings in profile > developer settings > personal access token > fine grain > set the permissions as given below(there are images below too)
 
 Permissions for Personal access token
 
