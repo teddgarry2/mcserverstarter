@@ -34,6 +34,8 @@ Repository access : all repositories (or the repo u want)
 
 Permissions : Actions (read and write); Workflow(read and write)
 
+![PAT1](https://github.com/dibope/workflowtrigger_bot/blob/main/PAT1.jpg)
+![PAT2](https://github.com/dibope/workflowtrigger_bot/blob/main/PAT2.jpg)
 
 4)(Not needed for the [bot](https://discord.com/oauth2/authorize?client_id=1365006964001738993))
 
