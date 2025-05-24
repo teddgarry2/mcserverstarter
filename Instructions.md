@@ -17,4 +17,4 @@
 ![image](https://github.com/user-attachments/assets/4b7f00b9-48cf-455e-bae0-cf661f3c1b8d)
 
 
-## Note: Do not run if there's a script running already (Nothing happens but don't waste ur time)
+
