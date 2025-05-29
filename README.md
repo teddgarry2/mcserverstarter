@@ -1,4 +1,6 @@
-## Runs entirely on github no need to download 
+# Seedloaf mc server starter
+Selenium script to start seedloaf server 
+
 #### (only thing u need to do is add email and password)
 #### (There's a Instructions.md if u wish to add ur friends to use this)
 ### Table of contents:
@@ -12,6 +14,8 @@
 
 1)Fork this and create 2 repository secrets named USERNAME, PASSWORD.(ur email and seddloaf password)
 
+  Go to Actions tab and enable workflows
+  
   To add repository secret:(Settings > Secrets and variables > Actions > repository secrets)
 
 ( No one, even u can't see them after u set so it's really a secret)
