@@ -19,7 +19,7 @@ Selenium script to start seedloaf server
 
   Go to Actions tab and enable workflows
   
-  To add repository secret:(Settings > Secrets and variables > Actions > repository secrets)
+  To add repository secret:(Settings > Secrets and variables > Actions > repository secrets > New repository secret)
 
 ( No one, even u can't see them after u set so it's really a secret)
 ![repo_secrets1](https://github.com/dibope/mcserverstarter/blob/main/.github/workflows/Images/repo_secrets1.jpg)
