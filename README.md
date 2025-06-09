@@ -12,7 +12,9 @@ Selenium script to start seedloaf server
 
 
 
-1)Fork this and create 2 repository secrets named USERNAME, PASSWORD.(ur email and seddloaf password)
+1)Fork this(top right) and create 2 repository secrets named USERNAME, PASSWORD.(ur email and seddloaf password)
+![image](https://github.com/user-attachments/assets/d48923e8-4281-4cb3-8b5d-aa3f60cad51e)
+
 
   Go to Actions tab and enable workflows
   
