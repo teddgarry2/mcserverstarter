@@ -2,10 +2,10 @@
 Selenium script to start seedloaf server 
 
 #### (only thing u need to do is add email and password)
-#### (There's a Instructions.md if u wish to add ur friends to use this)
+#### (There's a Instructions.md(not for [bot](https://discord.com/oauth2/authorize?client_id=1365006964001738993)) if u wish to add ur friends to use this)
 ### Table of contents:
 - [Setup](https://github.com/dibope/mcserverstarter/blob/main/README.md#to-use-it-for-ur-seedloaf-server)
-- [Prevent friends from changing code(Not needed for bot)](https://github.com/dibope/mcserverstarter/blob/main/README.md#to-prevent-them-from-changing-the-codenot-needed-for-bot) (Make sure u do this too!)
+- [Prevent friends from changing code(Make sure u do this too!)](https://github.com/dibope/mcserverstarter/blob/main/README.md#to-prevent-them-from-changing-the-codenot-needed-for-bot) (Not needed for [bot](https://discord.com/oauth2/authorize?client_id=1365006964001738993))
 - [Common problems](https://github.com/dibope/mcserverstarter/blob/main/README.md#common-problems)
 
 ### To use it for ur seedloaf server: (Setup)
