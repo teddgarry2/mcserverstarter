@@ -58,13 +58,13 @@ Add your friends as collaborators
 2)Set ur friends with read only access
 
 ### Common problems:
-1. rewrite secrets
+1. check if u have enabled workflows in Action tab
 
-2. check if u have enabled workflows in Action tab
+2. View the run in actions tab. open Run selenium script section to view any problems like password incorrect or anything.
 
-3. try **changing extension of selenium_old_working.txt to .yml** and try using it
+3. try using older selenium file named selenium_working.yml. this is the last option
 
-4. If you have created seedloaf acc though discord, even if u added password after that it wont work. Do the following in Seedloaf:
+4. If you have created seedloaf acc though discord and not by email, even if u added password after that it wont work. Do the following in Seedloaf:
 
     1) add an email
 
