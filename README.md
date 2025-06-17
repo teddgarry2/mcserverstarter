@@ -60,7 +60,7 @@ Add your friends as collaborators
 ### Common problems:
 1. check if u have enabled workflows in Action tab
 
-2. View the run in actions tab. open Run selenium script section to view any problems like password incorrect or anything.
+2. [View the run](https://github.com/dibope/mcserverstarter/blob/main/Instructions.md#5-view-to-check-the-log) in actions tab. open Run selenium script section to view any problems like password incorrect or anything.
 
 3. try using older selenium file named selenium_working.yml. this is the last option
 
