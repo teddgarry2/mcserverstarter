@@ -59,12 +59,14 @@ Add your friends as collaborators
 
 ### Common problems:
 1. check if u have enabled workflows in Action tab
+   
+   ![image](https://github.com/user-attachments/assets/f0f136c6-83b9-4469-b503-1577447a9c15)
 
-2. [View the run](https://github.com/dibope/mcserverstarter/blob/main/Instructions.md#5-view-to-check-the-log) in actions tab. open Run selenium script section to view any problems like password incorrect or anything.
+3. [View the run](https://github.com/dibope/mcserverstarter/blob/main/Instructions.md#5-view-to-check-the-log) in actions tab. open Run selenium script section to view any problems like password incorrect or anything.
 
-3. try using older selenium file named selenium_working.yml. this is the last option
+4. try using older selenium file named selenium_working.yml. this is the last option
 
-4. If you have created seedloaf acc though discord and not by email, even if u added password after that it wont work. Do the following in Seedloaf:
+5. If you have created seedloaf acc though discord and not by email, even if u added password after that it wont work. Do the following in Seedloaf:
 
     1) add an email
 
