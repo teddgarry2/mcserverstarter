@@ -41,6 +41,10 @@ Repository access : all repositories (or the repo u want)
 
 Permissions : Actions (read and write); Workflow(read and write)
 
+**Note**: DO NOT GIVE ANY PERMISSIONS OTHER THAN SPECIFIED. ESPECIALLY **contents** permission lets anyone edit your repo so check if this is your finally permissions
+ ![image](https://github.com/user-attachments/assets/763a4470-551a-4489-82cb-a5625eaa36b1)
+
+in permissions tab
 ![PAT1](https://github.com/dibope/workflowtrigger_bot/blob/main/PAT1.jpg)
 ![PAT2](https://github.com/dibope/workflowtrigger_bot/blob/main/PAT2.jpg)
 
