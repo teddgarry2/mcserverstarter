@@ -1,10 +1,15 @@
 name: Run Selenium Script 
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      use_session_cache:
+        description: "Use session cache"
+        required: false
+        default: false
 
 jobs:
   run-selenium:
@@ -75,8 +80,36 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
         run: echo "USERNAME is $USERNAME"
 
+      - name: Restore Session Cache
+        if: ${{ inputs.use_session_cache == 'true' }}
+        id: restore-session
+        uses: actions/cache/restore@v4
+        with:
+          path: /tmp/seedloaf-session
+          key: seedloaf-session-cache-${{ github.run_id }}
+          restore-keys: |
+            seedloaf-session-cache-
+
       - name: Run Selenium Script
         env:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: python .github/workflows/websitebotex.py
+
+      - name: Check for new session
+        if: ${{ inputs.use_session_cache == 'true' }}
+        id: session-check
+        run: |
+          if [ -f /tmp/seedloaf-session/.valid_session ]; then
+            echo "valid=true" >> $GITHUB_OUTPUT
+          else
+            echo "valid=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Save session cache
+        if: ${{ inputs.use_session_cache == 'true' && steps.session-check.outputs.valid == 'true' }}
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: /tmp/seedloaf-session
+          key: seedloaf-session-cache-${{ github.run_number }}
