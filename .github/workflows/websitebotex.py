@@ -114,6 +114,7 @@ def run_loginflow(usernamesec,passwordsec):
         print("After waiting for password:\n"+driver.current_url)
         
         # Now enter password  
+        global old_url
         old_url = driver.current_url
         driver.execute_script("arguments[0].scrollIntoView(true);", password)
         driver.execute_script("arguments[0].click();", password)
@@ -143,6 +144,7 @@ try:
         lambda d: "dashboard" in d.current_url
     )
     print("✅ Already logged in, at dashboard")
+    ran_loginflow = 0
 except:
     print("🔐 Not logged in — need to re-run login flow:\n"+driver.current_url)
     try: 
