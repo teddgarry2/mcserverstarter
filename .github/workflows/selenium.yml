@@ -105,7 +105,7 @@ jobs:
         run: python .github/workflows/websitebotex.py
 
       - name: Run Selenium Stop Script
-        if: github.event.inputs.start_or_stop != 'true'
+        if: github.event.inputs.start_or_stop != 'false'
         env:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
