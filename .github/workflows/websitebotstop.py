@@ -144,6 +144,7 @@ try:
         lambda d: "dashboard" in d.current_url
     )
     print("✅ Already logged in, at dashboard")
+    ran_loginflow = 0
 except:
     print("🔐 Not logged in — need to re-run login flow:\n"+driver.current_url)
     try: 
