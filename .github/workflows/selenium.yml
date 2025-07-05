@@ -12,7 +12,11 @@ on:
       use_session_cache:
         description: "Use session cache"
         required: false
-        default: false
+        default: "false"
+      start_or_stop:
+        description: "start or stop"
+        required: false
+        default: "true"
 
 jobs:
   run-selenium:
@@ -93,11 +97,19 @@ jobs:
           restore-keys: |
             seedloaf-session-cache-
 
-      - name: Run Selenium Script
+      - name: Run Selenium Start Script
+        if: github.event.inputs.start_or_stop == 'true'
         env:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: python .github/workflows/websitebotex.py
+
+      - name: Run Selenium Stop Script
+        if: github.event.inputs.start_or_stop != 'true'
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+        run: python .github/workflows/websitebotstop.py
 
       - name: Check for new session
         if: ${{ inputs.use_session_cache == 'true' }}
